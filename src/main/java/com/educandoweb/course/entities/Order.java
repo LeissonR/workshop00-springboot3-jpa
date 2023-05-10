@@ -102,6 +102,12 @@ public class Order implements Serializable {
 	public Set<OrderItem> getItems(){
 		return items;
 	}
+	
+	public Double getTotal() {
+    return items.stream()
+                .mapToDouble(OrderItem::getSubTotal)
+                .sum();
+}
 
 	@Override
 	public int hashCode() {
